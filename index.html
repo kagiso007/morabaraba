@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html ng-app="ngMorabaraba" ng-controller='ngMorabarabaCtrl' ng-cloak>
+<head>
+  <title>MORABABA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <link rel="icon" type="image/png" href="images/Wits-Colloquial-colour-stack-400x400.png"/>
+
+  <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-9147521349427890",
+        enable_page_level_ads: true
+      });
+    </script>
+  <style type="text/css">
+    [ng\:cloak], [ng-cloak], .ng-cloak {
+      display: none !important;
+    }
+
+    html,
+    body {
+      height: 100%;
+      background: #DCDCDC;
+    }
+
+    #wrap {
+      min-height: 100%;
+      height: auto !important;
+      height: 100%;
+      margin-left: 12px;
+    }
+
+    #footer {
+      height: 60px;
+      background-color: rgba(189, 195, 199, .3);
+      color: rgba(236, 240, 241,1.0) !important;
+      margin-left: 12px;
+    }
+
+    @media (max-width: 767px) {
+      #footer {
+        margin-left: 20px;
+        margin-right: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left: 12px;
+      }
+    }
+
+    .container {
+      width: auto;
+      max-width: 600px;
+      margin-left: 12px;
+    }
+    .container .credit {
+      margin: 20px 0;
+      margin-left: 12px;
+    }
+
+    .clear {
+      clear: both;
+    }
+
+    #game-infos {
+      background: rgba(236, 240, 241,1.0);
+      color: rgba(0, 0, 0,1.0);
+      text-align: center;
+      font-size: 20px;
+      font-family: cursive;
+      height: auto;
+      margin-left: 12px;
+    }
+
+    .game-info {
+      background: rgba(241, 196,  15, 1);
+      float: left;
+      width: 279px;
+      padding: 10px;
+    }
+
+    .game-info-right {
+      border-left: 0px solid rgba(192,192,192,1);
+    }
+
+    .message {
+      border-top: 2px solid rgba(255, 240, 241,1.0);
+      padding: 9px;
+    }
+
+    #winMessage {
+      padding: 18px;
+      margin-top: 2px;
+      margin-bottom: 2px;
+    }
+
+    .btn-win {
+      border: none;
+      background-color: rgba( 39, 174,  96, 1) !important;
+      color: rgba(236, 240, 241,1.0);
+      padding: 9px 12px 10px;
+      line-height: 22px;
+      border-radius: 6px;
+      margin-bottom: 3px;
+      margin-top: 3px;
+    }
+
+    canvas {
+      position: absolute;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <div class="container">
+      <p class="lead">{{GAME.currentPlayer.username}} against the computer.</p>
+      <div id='game-infos'>
+        <div style="float: left">
+        <div ng-hide='GAME.newGameButton'>
+          <div class='game-info'>{{GAME.currentPlayer.username}} is </div>
+          <div class='game-info game-info-right'>{{GAME.currentPlayer.phase.name}}</div>
+          <div class='clear'></div>
+          <div class='message' ng-show="GAME.hasToDestroyEnemyPiece">remove any one of the enemy's pieces</div>
+
+        </div>
+        <div id='new-game' ng-show="GAME.newGameButton">
+          <div id='winMessage'>
+            {{GAME.winMessage}}
+          </div>
+          <button class='btn-win' ng-click='GAME.newGame()'>New game</button>
+        </div>
+      </div>
+
+      <canvas id="board"></canvas>
+      <canvas id="pieces"></canvas>
+ 
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+  <script src="javascripts/helpers/simpleClass.js"></script>
+  <script src="javascripts/classes.js"></script>
+  <script src="javascripts/colors.js"></script>
+  <script src="javascripts/players/human.js"></script>
+  <script src="javascripts/players/ai.js"></script>
+  <script src="javascripts/ui.js"></script>
+  <script src="javascripts/morabaraba.js"></script>
+</body>
+</html>
